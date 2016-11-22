@@ -10,17 +10,20 @@ namespace ComicWeb.Controllers
     {
         public ActionResult Detail()
         {
-            if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
-            {
-                return Redirect("/");
-                //return new RedirectResult("/");
-            }
 
-            return Content("yeah");
-            //return new ContentResult()
+            return View();
+
+            //if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
             //{
-            //        Content = "Yeah"
-            //};
+            //    return Redirect("/");
+            //    ////return new RedirectResult("/");
+            //}
+
+            //return Content("yeah");
+            ////return new ContentResult()
+            ////{
+            ////        Content = "Yeah"
+            ////};
         }
     }
 }
