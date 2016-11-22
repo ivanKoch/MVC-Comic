@@ -13,7 +13,7 @@ namespace ComicWeb.Controllers
         {
             var comicBook = new ComicBook()
             {
-                SeriesTitle = "Hulk, el hombre lobo",
+                SeriesTitle = "The amazing spider man",
                 IssueNumber = 700,
                 DescriptionHtml = "<p>Descripción con html para usar raw.</p>",
                 Artists = new Artist[]
