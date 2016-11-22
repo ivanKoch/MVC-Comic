@@ -1,5 +1,7 @@
 ﻿@{
     Layout = null;
+
+
 }
 
 <!DOCTYPE html>
@@ -11,7 +13,29 @@
 </head>
 <body>
     <div>
-        <h1>Hiiii</h1>
+        <h1>@ViewBag.SeriesTitle</h1>
+        <h2>Issue number: @ViewBag.IssueNumber</h2>
+        <h5>Description</h5>
+        <div>
+            <p>@ViewBag.Description</p>
+            @ViewBag.htmlEscape
+            @Html.Raw(ViewBag.Description)
+        </div>
+        @if (ViewBag.Artists.Length > 0)
+        {
+            <h5>Artists:</h5>
+            <div>
+                <p>Si esto es un array, entonces se visualiza asi:</p>
+                <p><strong>@ViewBag.Artists</strong></p>
+                <p>Para arreglarlo usamos un forich</p>
+                <ul>
+                    @foreach (var artist in ViewBag.Artists)
+                    {
+                        <li> @artist </li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </body>
 </html>
