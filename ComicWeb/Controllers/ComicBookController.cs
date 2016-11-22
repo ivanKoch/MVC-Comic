@@ -12,9 +12,7 @@ namespace ComicWeb.Controllers
         {
             ViewBag.SeriesTitle = "Este es el titulo";
             ViewBag.IssueNumber = 700;
-            ViewBag.Description = "bla bla bla bla bla bla bla";
-            ViewBag.HtmlEscape = "<p>hola esto es un parrafo html pero q troll vs escapo</p>";
-            ViewBag.HtmlEscapado = "<p>hola esto es un parrafo html con html raw q no escapa</p>";
+            ViewBag.Description = "<p>hola esto es un parrafo html pero q troll vs escapo</p>";
             ViewBag.Artists = new string[]
                 {
                 "algo: esto",
@@ -22,18 +20,6 @@ namespace ComicWeb.Controllers
                 "y por ultim: esto"
                 };
             return View();
-
-            //if (DateTime.Today.DayOfWeek == DayOfWeek.Tuesday)
-            //{
-            //    return Redirect("/");
-            //    ////return new RedirectResult("/");
-            //}
-
-            //return Content("yeah");
-            ////return new ContentResult()
-            ////{
-            ////        Content = "Yeah"
-            ////};
         }
     }
 }
