@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,16 +11,23 @@ namespace ComicWeb.Controllers
     {
         public ActionResult Detail()
         {
-            ViewBag.SeriesTitle = "Este es el titulo";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>hola esto es un parrafo html pero q troll vs escapo</p>";
-            ViewBag.Artists = new string[]
+            var comicBook = new ComicBook()
+            {
+                SeriesTitle = "Hulk, el hombre lobo",
+                IssueNumber = 700,
+                DescriptionHtml = "<p>Descripción con html para usar raw.</p>",
+                Artists = new Artist[]
                 {
-                "algo: esto",
-                "esto mas: de esto",
-                "y por ultim: esto"
-                };
-            return View();
+                    new Artist() { Role = "Script", Name = "Elba Gallo" },
+                    new Artist() { Role = "Pencils", Name = "Ramon Gutierrez" },
+                    new Artist() { Role = "Inks", Name = "Victor Olazabal" },
+                    new Artist() { Role = "Colors", Name = "Edgar Delgado" },
+                    new Artist() { Role = "Letters", Name = "Chris Eliopoulos" }
+                }
+            };
+            // alternativamente comicBook.SeriesTitle = "";
+
+            return View(comicBook);
         }
     }
 }
