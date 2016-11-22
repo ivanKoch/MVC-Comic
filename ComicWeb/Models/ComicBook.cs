@@ -14,5 +14,23 @@ namespace ComicWeb.Models
         public Artist[] Artists { get; set; }
         public bool Favorite { get; set; }
 
+        public string DisplayText
+        {
+            get
+            {
+                return SeriesTitle + " #" + IssueNumber;
+            }
+            // no set defined so it cant be changed
+        }
+
+        // image files: series-title-issuenumber.jpg
+        public string CoverImage
+        {
+            get
+            {
+                return SeriesTitle.Replace(" ", "-").ToLower()
+                    + "-" + IssueNumber + ".jpg";
+            }
+        }
     }
 }
