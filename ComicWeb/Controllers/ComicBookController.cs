@@ -1,4 +1,5 @@
-﻿using ComicWeb.Models;
+﻿using ComicWeb.Data;
+using ComicWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,20 @@ namespace ComicWeb.Controllers
 {
     public class ComicBookController : Controller
     {
-        public ActionResult Detail()
-        {
-            var comicBook = new ComicBook()
-            {
-                SeriesTitle = "The amazing spider man",
-                IssueNumber = 700,
-                DescriptionHtml = "<p>Descripción con html para usar raw.</p>",
-                Artists = new Artist[]
-                {
-                    new Artist() { Role = "Script", Name = "Elba Gallo" },
-                    new Artist() { Role = "Pencils", Name = "Ramon Gutierrez" },
-                    new Artist() { Role = "Inks", Name = "Victor Olazabal" },
-                    new Artist() { Role = "Colors", Name = "Edgar Delgado" },
-                    new Artist() { Role = "Letters", Name = "Chris Eliopoulos" }
-                }
-            };
-            // alternativamente comicBook.SeriesTitle = "";
+        private ComicBookRepository _comicBookRepository = null;
 
+        public ComicBookController()
+        {
+            _comicBookRepository = new ComicBookRepository();
+        }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var comicBook = _comicBookRepository.GetComicBook((int)id);
             return View(comicBook);
         }
     }
